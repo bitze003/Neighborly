@@ -25,3 +25,9 @@ body{font-family: 'Roboto', sans-serif;
 h1{
     color: antiquewhite;
     }
+#map-header{
+    color: black
+}
+#map{
+    color: white;
+}
