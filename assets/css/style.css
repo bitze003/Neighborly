@@ -1,5 +1,16 @@
-body{
-    background-color: black;
+body{font-family: 'Roboto', sans-serif;
+     background-repeat: no-repeat;
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+     height: 100%; 
+}
+#addEvent{
+    font-family: 'Roboto', sans-serif;
+    margin: 20px;
+    width:150px;
+    height: 40px;
+    font-size: 20px;
     
 }
 #event {
@@ -7,10 +18,10 @@ body{
 }
 #time {
     color: white;
-}
+    }
 #location {
     color: white;
-}
+    }
 h1{
     color: antiquewhite;
-}
+    }
