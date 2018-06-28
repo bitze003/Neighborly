@@ -26,7 +26,7 @@ body {
     color: rgba(23, 199, 211, 0.577);
 }
 #logo:hover {
-    color: #D2D96B;
+    color: rgba(240, 21, 196, 0.577);;
 }
 .nav {
     float: right;
@@ -55,7 +55,9 @@ body {
 }
 .upcoming{
     margin-top: 15px;
-    
+}
+th{
+    font-weight: normal;
 }
 footer {
     font-size: 10px;
@@ -66,5 +68,5 @@ footer {
     text-align: center;
     color: #444;
     padding: 1.25em;
-    background-color: rgba(23, 199, 211, 0.577);
+    background-color: rgba(108, 196, 203, 0.577);
 }
