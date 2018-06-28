@@ -1,10 +1,4 @@
-        /* greenish gray: #3F6B74 
-    light green: #08B9A7  
-some kinda yellow: #D2D96B 
-font-family: 'Anton', sans-serif;
-font-family: 'Source Sans Pro', sans-serif;
-font-family: 'Roboto', sans-serif;
-*/
+
 
 html,
 body {
@@ -26,7 +20,7 @@ body {
     color: rgba(23, 199, 211, 0.577);
 }
 #logo:hover {
-    color: rgba(240, 21, 196, 0.577);;
+    color: rgba(240, 21, 196, 0.577);
 }
 .nav {
     float: right;
@@ -44,6 +38,7 @@ body {
     color: #222;
 }
 #main-container{
+    z-index: -1;
     color: #222;
     font-size: 20px;
     background-color: #fff;
@@ -60,6 +55,7 @@ th{
     font-weight: normal;
 }
 footer {
+    z-index: -1;
     font-size: 10px;
     position: absolute;
     bottom: 0;
@@ -69,4 +65,57 @@ footer {
     color: #444;
     padding: 1.25em;
     background-color: rgba(108, 196, 203, 0.577);
+}
+#event-button {
+    margin-top: 50px;
+    padding: 10px 40px;
+}
+.modals {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 960px;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+.modal-content {
+    position: absolute;
+    /* top: 50%; */
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 1rem 1.5rem;
+    width: 24rem;
+    border-radius: 0.5rem;
+}
+.close-button {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: #ddd;
+}
+.close-button :hover {
+    background-color: #333;
+}
+.show-modal {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+.trigger {
+    position: absolute;
+    top: 10%;
+    margin-left: 40px;
+    width: 10em;
+    margin-top: 30px;
+    background-color: rgba(240, 21, 196, 0.577);
 }

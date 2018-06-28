@@ -11,23 +11,65 @@ $(document).ready(function () {
   };
   firebase.initializeApp(config);
 
-  var provider = new firebase.auth.FacebookAuthProvider();
-  $("#event-button").on('click', function () {
-  firebase.auth().signInWithPopup(provider).then(function(result) {
-    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-    var token = result.credential.accessToken;
-    // The signed-in user info.
-    var user = result.user;
-    // ...
-  }).catch(function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // The email of the user's account used.
-    var email = error.email;
-    // The firebase.auth.AuthCredential type that was used.
-    var credential = error.credential;
-    // ...
-  });
-})
-})
+  var database = firebase.database();
+  var modal = document.querySelector(".modals");
+  var trigger = document.querySelector(".trigger");
+  var closeButton = document.querySelector(".close-button");
+
+  function toggleModal() {
+      modal.classList.toggle("show-modal");
+      console.log(modal);
+  }
+
+  function windowOnClick(event) {
+      if (event.target === modal) {
+          toggleModal();
+          console.log("Please work!");
+      }
+  }
+
+  trigger.addEventListener("click", toggleModal);
+  closeButton.addEventListener("click", toggleModal);
+  window.addEventListener("click", windowOnClick);
+
+  $("#event-form-submit").on("click", function (event) {
+      event.preventDefault();
+
+      var eventTitle = $("#event-title").val();
+      var eventDate = $("#event-date").val();
+      var streetAddress = $("#street-address").val();
+      var city = $("#city").val();
+      var state = $("#state").val();
+      var zip = $("#zip").val();
+      var email = $("#email").val();
+
+      database.ref().push({
+          EventTitle: eventTitle,
+          EventDate: eventDate,
+          StreetAddress: streetAddress,
+          City: city,
+          State: state,
+          Zip: zip,
+          Email: email,
+          dateAdded: firebase.database.ServerValue.TIMESTAMP
+      })
+      $("input").val("");
+
+  })
+  database.ref().on("child_added", function (snapshot) {
+      console.log(snapshot.val().EventTitle);
+
+      $("tbody").append('<tr>');
+      $("tbody").append('<td>' + snapshot.val().EventDate + '</td>');
+      $("tbody").append('<td>' + snapshot.val().EventTitle + '</td>');
+      $("tbody").append('<td>' + snapshot.val().StreetAddress + '</td>');
+      $("tbody").append('</tr>');
+
+  })
+
+  // MAP MAP MAP MAP MAP MAP MAP MAP MAP MAP MAP MAP MAP MAP MAP MAP MAP //
+
+ 
+
+
+});
