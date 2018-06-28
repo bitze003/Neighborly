@@ -37,23 +37,20 @@ $(document).ready(function () {
 
       var eventTitle = $("#event-title").val();
       var eventDate = $("#event-date").val();
-      var streetAddress = $("#street-address").val();
-      var city = $("#city").val();
-      var state = $("#state").val();
-      var zip = $("#zip").val();
-      var email = $("#email").val();
+      var eventTime = $("#event-time").val();
+      var eventLocation = $("#event-address").val();
+      var eventDescription = $("#event-description").val();
 
       database.ref().push({
-          EventTitle: eventTitle,
+          EventTitle: eventTitle,4
           EventDate: eventDate,
-          StreetAddress: streetAddress,
-          City: city,
-          State: state,
-          Zip: zip,
-          Email: email,
+          EventTime: eventTime,
+          EventLocation: eventLocation,
+          EventDescription: eventDescription,
           dateAdded: firebase.database.ServerValue.TIMESTAMP
       })
       $("input").val("");
+      $(".modals").hide();
 
   })
   database.ref().on("child_added", function (snapshot) {
@@ -61,8 +58,10 @@ $(document).ready(function () {
 
       $("tbody").append('<tr>');
       $("tbody").append('<td>' + snapshot.val().EventDate + '</td>');
+      $("tbody").append('<td>' + snapshot.val().EventTime + '</td>');
       $("tbody").append('<td>' + snapshot.val().EventTitle + '</td>');
-      $("tbody").append('<td>' + snapshot.val().StreetAddress + '</td>');
+      $("tbody").append('<td>' + snapshot.val().EventLocation + '</td>');
+      $("tbody").append('<td>' + snapshot.val().EventDescription + '</td>');
       $("tbody").append('</tr>');
 
   })

@@ -31,13 +31,13 @@
 
             console.log(temp);
             for (var i = 0; i < temp.length; i++) {
-                geocodeAddress(geocoder, map, temp[i].StreetAddress)
+                geocodeAddress(geocoder, map, temp[i].EventLocation, temp[i].EventTitle, temp[i].EventDescription)
             }
         })
 
-        function geocodeAddress(geocoder, resultsMap, StreetAddress) {
+        function geocodeAddress(geocoder, resultsMap, EventLocation, EventTitle, EventDescription) {
             geocoder.geocode({
-                'address': StreetAddress
+                'address': EventLocation,
             }, function (results, status) {
                 if (status === 'OK') {
                     resultsMap.setCenter(results[0].geometry.location);
@@ -49,8 +49,7 @@
                     alert('Geocode was not successful for the following reason: ' + status);
                 }
                 var infoWindow = new google.maps.InfoWindow({
-                    content: '<p>' + StreetAddress + '<p>'
-
+                    content: '<p>' + EventLocation + '<p>' + '<p>' + EventTitle + '<p>' + '<p>' + EventDescription + '<p>',             
                 });
                 marker.addListener('click', function () {
                     infoWindow.open(map, marker);
