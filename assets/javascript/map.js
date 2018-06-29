@@ -21,7 +21,7 @@
         });
 
         var geocoder = new google.maps.Geocoder();
-        
+
         //call to firebase (reading to database)
         database.ref().on("value", function (snapshot) {
             let temp = [];
@@ -31,11 +31,11 @@
 
             console.log(temp);
             for (var i = 0; i < temp.length; i++) {
-                geocodeAddress(geocoder, map, temp[i].EventLocation, temp[i].EventTitle, temp[i].EventDescription)
+                geocodeAddress(geocoder, map, temp[i].EventTitle, temp[i].EventLocation, temp[i].EventTime, temp[i].EventDescription)
             }
         })
 
-        function geocodeAddress(geocoder, resultsMap, EventLocation, EventTitle, EventDescription) {
+        function geocodeAddress(geocoder, resultsMap, EventTitle, EventLocation, EventTime, EventDescription) {
             geocoder.geocode({
                 'address': EventLocation,
             }, function (results, status) {
@@ -49,7 +49,7 @@
                     alert('Geocode was not successful for the following reason: ' + status);
                 }
                 var infoWindow = new google.maps.InfoWindow({
-                    content: '<p>' + EventLocation + '<p>' + '<p>' + EventTitle + '<p>' + '<p>' + EventDescription + '<p>',             
+                    content: '<p>' + EventTitle + '<p>' +'<p>' + EventLocation + '<p>' +'<p>' + EventTime + '<p>' +'<p>' + EventDescription + '<p>',
                 });
                 marker.addListener('click', function () {
                     infoWindow.open(map, marker);
