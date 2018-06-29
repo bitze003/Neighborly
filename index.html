@@ -74,18 +74,22 @@
                     <input type="text" class="form-control" id="event-title" placeholder="Enter event title..">
                 </div>
                 <div class="form-group">
-                    <label for="event-date">Event Date and Time</label>
-                    <input type="datetime-local" class="form-control" id="event-date" placeholder="Enter event date and Time..">
+                    <label for="event-date">Event Date</label>
+                    <input type="date" class="form-control" id="event-date" placeholder="Enter event date..">
                 </div>
                 <div class="form-group">
-                    <label for="street-address">Street Address</label>
-                    <input type="text" class="form-control" id="street-address" placeholder="Enter Street Address..">
+                    <label for="street-address">Time</label>
+                    <input type="time" class="form-control" id="event-time" placeholder="Enter Time..">
                 </div>
                 <div class="form-group">
-                    <label for="city">City</label>
-                    <input type="text" class="form-control" id="city" placeholder="Enter City..">
+                    <label for="location">Location (include city)</label>
+                    <input type="text" class="form-control" id="event-address" placeholder="Address or landmark..">
                 </div>
-                <!-- remember to change :focus for inputs/borders to match logo color, and submit buttons too -->
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="text" class="form-control" id="event-description" placeholder="What's happening?">
+                </div>
+                <!-- remember to change :focus for inputs/borders to match logo color, and submit buttons too 
                 <div class="form-group">
                     <label for="state">State</label>
                     <select class="form-control" id="state">
@@ -141,7 +145,7 @@
                         <option value="WI">Wisconsin</option>
                         <option value="WY">Wyoming</option>
                     </select>
-                </div>
+                </div> 
                 <div class="form-group">
                     <label for="zip">Zip Code</label>
                     <input type="number" class="form-control" id="zip" placeholder="Enter Zip Code..">
@@ -149,7 +153,7 @@
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" placeholder="Enter your email..">
-                </div>
+                </div> -->
 
                 <button type="submit" class="btn btn-primary" id="event-form-submit">Submit</button>
             </form>
@@ -168,6 +172,7 @@
                                 <th scope="col">Time</th>
                                 <th scope="col">Event</th>
                                 <th scope="col">Where</th>
+                                <th scope="col">Description</th>
                             </tr>
                         </thead>
                         <tbody>
