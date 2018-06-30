@@ -54,13 +54,13 @@ $(document).ready(function () {
 
     })
     database.ref().on("child_added", function (snapshot) {
-        
+
         var date = snapshot.val().EventDate + ' ' + snapshot.val().EventTime;
         var format = moment(date).format('LLL');
         var unixTime = moment(format).format('X');
         var now = moment().format('X');
-   // var secondsFromNow = unixTime - now;
-        
+        // var secondsFromNow = unixTime - now;
+
         //if event date in unix time > now in unix time, post the event
         if (unixTime > now) {
             $("tbody").append('<tr>');
@@ -70,16 +70,61 @@ $(document).ready(function () {
             } else {
                 $("tbody").append('<td>' + moment(snapshot.val().EventDate).format('LL') + '</td>');
             }
-        $("tbody").append('<td>' + snapshot.val().EventTime + '</td>');
-        $("tbody").append('<td>' + snapshot.val().EventTitle + '</td>');
-        $("tbody").append('<td>' + snapshot.val().EventLocation + '</td>');
-        $("tbody").append('<td>' + snapshot.val().EventDescription + '</td>');
-        $("tbody").append('</tr>');
-    }
+            $("tbody").append('<td>' + snapshot.val().EventTime + '</td>');
+            $("tbody").append('<td>' + snapshot.val().EventTitle + '</td>');
+            $("tbody").append('<td>' + snapshot.val().EventLocation + '</td>');
+            $("tbody").append('<td>' + snapshot.val().EventDescription + '</td>');
+            $("tbody").append('</tr>');
+        }
     });
 
 
+    // Get elements
+    const txtEmail = document.getElementById('txtEmail');
+    const txtPassword = document.getElementById('txtPassword');
+    const btnLogin = document.getElementById('btnLogin');
+    const btnSignUp = document.getElementById('btnSignUp');
+    const btnLogout = document.getElementById('btnLogout');
 
+    // Add login event
+    btnLogin.addEventListener('click', e => {
+        //Get email and pass
+        const email = txtEmail.value;
+        const pass = txtPassword.value;
+        const auth = firebase.auth();
+        // Sign in
+        const promise = auth.signInWithEmailAndPassword(email, pass);
+        promise.catch(e => console.log(e.message));
+
+    });
+    // Add signup event
+    btnSignUp.addEventListener('click', e => {
+        //Get email and pass
+        //TODO: check for real email
+        const email = txtEmail.value;
+        const pass = txtPassword.value;
+        const auth = firebase.auth();
+        // Sign in
+        const promise = auth.createUserWithEmailAndPassword(email, pass);
+        promise.catch(e => console.log(e.message));
+    });
+
+    // Add signout event
+    btnLogout.addEventListener('click', e => {
+        firebase.auth().signOut();
+    });
+
+    // Add a realtime listener
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+        if (firebaseUser) {
+            console.log(firebaseUser);
+            console.log('you are logged in');
+            btnLogout.classList.remove('hide');
+        } else {
+            console.log('not logged in');
+            btnLogout.classList.add('hide');
+        }
+    });
 
 
 });
