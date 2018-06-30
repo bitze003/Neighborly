@@ -119,3 +119,7 @@ footer {
     margin-top: 30px;
     background-color: rgba(240, 21, 196, 0.577);
 }
+
+.hide {
+    display: none;
+}   
