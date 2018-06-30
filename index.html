@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
         crossorigin="anonymous">
     <!-- firebase before other scripts I think -->
+    <link rel="shortcut icon" href="assets/images/neighborly-favicon.png" />
     <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -33,44 +34,26 @@
             /* border-bottom: 4px solid #000; */
         
         }
-        createButton{
-            padding-bottom: 24px;
-        }
-    #map-link{
-        position:absolute;
-   top:0;
-   right:0;
-    }
+
     </style>
 </head>
 
 <body>
-
     <div class="container" id="header">
         <div class="row">
             <div class="col-4" id="logo">neighborly</div>
             <div class="col-7">
                 <nav class="nav">
-
+                    <a class="nav-link" id="map-link" href="map.html">Map
+                        <span class="icons">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </span>
+                    </a>
                     <a class="nav-link" id="login-link" href="#">Login
                         <span class="icons">
                             <i class="fas fa-sign-in-alt"></i>
                         </span>
-                        <div class="container-fluid">
-                            <div class="row">
-                                <input id="txtEmail" type="email" placeholder="Email">
-                                <input id="txtPassword" type="password" placeholder="Password">
-                                <button id="btnLogin" class="btn btn-action">Log in</button>
-                                <button id="btnSignUp" class="btn btn-secondary">Sign Up</button>
-                                <button id="btnLogout" class="btn btn-action hide">Log Out</button>
-                            </div>
-                        </div>
                     </a>
-                    <a class="nav-link" id="map-link" href="map.html">Map
-                            <span class="icons">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </span>
-                        </a>
                 </nav>
             </div>
             <div class="col-1"></div>
