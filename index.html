@@ -16,9 +16,11 @@
     <!-- awesome fontawesome icons -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
         crossorigin="anonymous">
-    <!-- firebase before other scripts I think -->
+    
     <link rel="shortcut icon" href="assets/images/neighborly-favicon.png" />
-    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+    <!-- firebase before other scripts I think -->
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-auth.js"></script>
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <style>
@@ -32,13 +34,30 @@
             -o-background-size: cover;
             background-size: cover;
             /* border-bottom: 4px solid #000; */
-        
         }
 
     </style>
 </head>
 
 <body>
+        <script>
+            window.fbAsyncInit = function() {
+                FB.init ({
+                    appId      : '2150728015168854',
+                    xfbml      : true,
+                    version    : 'v2.6'
+                });
+            };
+            
+            (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            } (document, 'script', 'facebook-jssdk'));
+                
+            </script>
     <div class="container" id="header">
         <div class="row">
             <div class="col-4" id="logo">neighborly</div>
@@ -49,11 +68,11 @@
                             <i class="fas fa-map-marker-alt"></i>
                         </span>
                     </a>
-                    <a class="nav-link" id="login-link" href="#">Login
+                    <!-- <a class="nav-link" id="facebookSignIn" href="#">Login
                         <span class="icons">
                             <i class="fas fa-sign-in-alt"></i>
                         </span>
-                    </a>
+                    </a> -->
                 </nav>
             </div>
             <div class="col-1"></div>
@@ -93,7 +112,6 @@
                     <input type="text" class="form-control" id="event-description" placeholder="What's happening?">
                 </div>
  
-
                 <button type="submit" class="btn btn-primary" id="event-form-submit">Submit</button>
             </form>
         </div>
